@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "561520878152",
+    "project_id": "login-fenix",
+    "storage_bucket": "login-fenix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561520878152:android:e7470b4ce9df86af316e7d",
+        "android_client_info": {
+          "package_name": "com.example.login_fenix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561520878152-tjlt4vn697tb95nuqor4cv9hhmc78ufs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqNXCCis2ZVnhLmO37XBDhc7Hq_DvgU5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561520878152-tjlt4vn697tb95nuqor4cv9hhmc78ufs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
