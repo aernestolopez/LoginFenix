@@ -10,7 +10,7 @@ class HttpController{
     if(response.statusCode==200){
       return Device.fromJson(jsonDecode(response.body));
     }else{
-
+        throw Exception("No se pudo obtener el dispositivo");
     }
   }
 }
