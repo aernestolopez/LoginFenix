@@ -2,7 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_fenix/login.dart';
+
+import '../../controller/login_controller.dart';
 
 class Logout extends StatefulWidget {
   const Logout({super.key});
@@ -29,10 +30,8 @@ class _LogoutState extends State<Logout> {
                 'Sign Out',
                 style: TextStyle(fontSize: 24),
               ),
-              onPressed: ()async {
-                await FirebaseAuth.instance.signOut().then((value) =>Navigator.push(context, MaterialPageRoute(builder: (context){
-            return Login();
-                })));
+              onPressed: () {
+               LoginController.logOut(context);
               },
             )
             ),

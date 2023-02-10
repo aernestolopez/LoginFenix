@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:login_fenix/pages/carga.dart';
-import 'package:login_fenix/pages/logout.dart';
+import 'package:login_fenix/ui/pages/carga.dart';
+import 'package:login_fenix/ui/pages/logout.dart';
 class Home extends StatefulWidget {
   const Home({super.key});
 

@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login_fenix/home.dart';
+import 'package:login_fenix/controller/login_controller.dart';
 
 class Login extends StatefulWidget {
    const Login({Key? key}) : super(key: key);
@@ -100,23 +99,8 @@ Widget botonEntrar(BuildContext context){
   return SizedBox(
     height: 50,
     child: TextButton(
-      onPressed: () async{
-        try{
-          await auth.signInWithEmailAndPassword(
-          email: email, password: contrasenia).then((value) => Navigator.push(context, MaterialPageRoute(builder: (context){
-            return Home();
-          })));
-          
-        }catch(e){
-    Fluttertoast.showToast(
-      msg: e.toString(),
-      toastLength: Toast.LENGTH_LONG,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.black,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
-        }
+      onPressed: () {
+        LoginController.comprobarLogin(email, contrasenia, context);
       },
       style: TextButton.styleFrom(
           foregroundColor: Colors.white,

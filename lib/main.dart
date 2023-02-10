@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:login_fenix/login.dart';
-import 'firebase_options.dart';
+//import 'package:firebase_core/firebase_core.dart';
+import 'package:login_fenix/controller/login_controller.dart';
+import 'package:login_fenix/ui/pages/login.dart';
+//import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  LoginController.initfirebase();
   runApp(const MyApp());
 }
 

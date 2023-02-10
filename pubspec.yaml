@@ -41,6 +41,8 @@ dependencies:
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.3
   fluttertoast: ^8.0.8
+  http: ^0.13.5
+  json_serializable: ^6.6.1
 
 
 dev_dependencies:
