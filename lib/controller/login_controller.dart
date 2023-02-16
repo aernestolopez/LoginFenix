@@ -15,8 +15,8 @@ static Future initfirebase() async {
 
 static Future comprobarLogin(email, pass, context) async {
   try {
-    await auth
-        .signInWithEmailAndPassword(email: email, password: contrasenia)
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: pass)
         .then((value) =>
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Home();

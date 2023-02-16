@@ -30,7 +30,7 @@ class _CargaState extends State<Carga> {
             future: futureDevice,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.nombre+" "+ snapshot.data!.id + " "+ snapshot.data!.tipo);
+                return Text("${snapshot.data!.nombre} ${snapshot.data!.id} ${snapshot.data!.tipo}");
                 
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');

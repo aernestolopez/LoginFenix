@@ -1,18 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_fenix/controller/login_controller.dart';
-import 'package:login_fenix/ui/pages/register.dart';
+import 'package:login_fenix/ui/pages/login.dart';
 
-class Login extends StatefulWidget {
-   const Login({Key? key}) : super(key: key);
+import '../../controller/register_controller.dart';
+
+class Register extends StatefulWidget {
+   const Register({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 late String email, contrasenia;
 FirebaseAuth auth=FirebaseAuth.instance;
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,14 +42,10 @@ Widget cuerpo(BuildContext context){
             campoContrasenia(),
             SizedBox(height:20,),
             botonEntrar(context),
-            SizedBox(height: 20,),
-            Text("¿No tienes cuenta?", style: TextStyle(fontSize: 18),),
             SizedBox(height: 10,),
-            botonRegister(context)
-            
-            
-            //SizedBox(height: 40),
-            
+            Text("¿Tienes Cuenta?", style: TextStyle(fontSize: 18),),
+            SizedBox(height:20,),
+            botonLogin(context)
           ],
           ),
         ),
@@ -56,7 +53,7 @@ Widget cuerpo(BuildContext context){
 }
 
 Widget nombre(){
-  return const Text("Bienvenido/a", style: TextStyle(color:  Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold),);
+  return const Text("Registrarse", style: TextStyle(color:  Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold),);
 }
 
 Widget campoUsuario(){
@@ -110,34 +107,33 @@ Widget botonEntrar(BuildContext context){
     width: 220,
     child: TextButton(
       onPressed: () {
-        LoginController.comprobarLogin(email, contrasenia, context);
+        RegisterController.comprobarRegister(email, contrasenia, context);
       },
       style: TextButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue,
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         ),
-      child: const Text("Iniciar Sesion", style: TextStyle(fontSize: 25)),
+      child: const Text("Registrar", style: TextStyle(fontSize: 25)),
     ),
   );
 }
 
-Widget botonRegister(BuildContext context){
+Widget botonLogin(BuildContext context){
   return SizedBox(
     height: 50,
     width: 220,
     child: TextButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return Register();
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder:  (context) {
+              return Login();
             }));
+            
       },
-      style: TextButton.styleFrom(
+          style: TextButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue,
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-        ),
-      child: const Text("Registrarse", style: TextStyle(fontSize: 25)),
-    ),
+        ), child: const Text("Iniciar Sesion", style: TextStyle(fontSize: 25),) ,),
   );
 }
