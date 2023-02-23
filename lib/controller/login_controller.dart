@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:login_fenix/ui/pages/home.dart';
 import 'package:login_fenix/ui/pages/login.dart';
 import '../firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../ui/pages/home.dart';
 class LoginController{
 
 static Future initfirebase() async {
@@ -19,7 +19,7 @@ static Future comprobarLogin(email, pass, context) async {
         .signInWithEmailAndPassword(email: email, password: pass)
         .then((value) =>
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return Home();
+              return const Home();
             })));
   } catch (e) {
     Fluttertoast.showToast(

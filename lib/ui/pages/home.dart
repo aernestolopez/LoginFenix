@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:login_fenix/ui/pages/carga.dart';
-import 'package:login_fenix/ui/pages/logout.dart';
+import 'package:login_fenix/model/device.dart';
+import '../../controller/http_controller.dart';
+import '../../controller/login_controller.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -11,41 +14,105 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-    int currentIndex=0;
-    final screens=[
-      Carga(),
-      Logout()
-    ];
+  late Future<Device?> futureDevice;
+  String estado="Espera";
+
+  @override
+  void initState() {
+    super.initState();
+    HttpController hc=HttpController();
+    futureDevice=hc.ObtenerDispositivo();
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:AppBar(
+     return Scaffold(
+        appBar:AppBar(
         automaticallyImplyLeading: false,
-        title:Text("SmartFenix"),
+        title:RichText(text: TextSpan(text: "AAAAAA", recognizer: TapGestureRecognizer()..onSecondaryTap=() {
+          LoginController.logOut(context);
+        })),
         centerTitle: true,
       ),
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (value) => setState(() {
-          currentIndex=value;
-        }),
-        type: BottomNavigationBarType.shifting, // Shifting
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-          backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.logout),
-          label: 'Logout',
-          backgroundColor: Colors.red
-          )
-      ],
-      )    
-    );
+       body: Column(
+         children: [
+           Card(
+             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+             margin: EdgeInsets.all(15),
+              elevation: 10,
+             child: Column(
+               mainAxisSize: MainAxisSize.min,
+               children: <Widget>[
+              ListTile(
+            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+            title: Text('Dispositivo', textAlign: TextAlign.center,),
+                     ),
+                 FutureBuilder<Device?>(
+                   future:futureDevice,
+                   builder: ((context, snapshot){
+                     if(snapshot.hasData){
+                      return Text("Nombre Dispositivo: ${snapshot.data!.nombre} Tipo: ${snapshot.data!.tipo}");
+                      
+                     } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                  return const CircularProgressIndicator();
+                   }
+                 )
+                 ),
+                 Row(
+                   children: <Widget>[const SizedBox(height: 20),]
+                 ),
+                 
+         ],
+             ),
+           ),
+         Card(
+             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+             margin: EdgeInsets.all(15),
+              elevation: 10,
+             child: Column(
+               mainAxisSize: MainAxisSize.min,
+               children: <Widget>[
+              ListTile(
+            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+            title: Text(estado, textAlign: TextAlign.center,),
+                     ),
+                 FutureBuilder<Device?>(
+                   future:futureDevice,
+                   builder: ((context, snapshot){
+                     if(snapshot.hasData){
+                      switch (estado) {
+                        case "Espera":
+                          return Image.memory(snapshot.data!.imgEspera, width: 300, height: 300,);
+                          case "Abierto":
+                          return Image.memory(snapshot.data!.imgAbierto, width: 300, height: 300,);
+                          case "Cerrado":
+                          return Image.memory(snapshot.data!.imgCerrado, width: 300, height: 300,);
+                        default:
+                        return Image.memory(snapshot.data!.imgEspera, width: 300, height: 300,);
+                      }
+                       //return Text("Nombre Dispositivo: ${snapshot.data!.nombre} Tipo: ${snapshot.data!.tipo}");
+                      
+                     } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                  return const CircularProgressIndicator();
+                   }
+                 )
+                 ),
+                 Row(
+                   children: <Widget>[const SizedBox(height: 20),]
+                 ),
+               ],
+             ),
+           ),
+         ]
+         
+       ),
+     );
+     
+     
   }
 }
