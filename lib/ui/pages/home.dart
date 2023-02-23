@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
      return Scaffold(
         appBar:AppBar(
         automaticallyImplyLeading: false,
-        title:RichText(text: TextSpan(text: "AAAAAA", recognizer: TapGestureRecognizer()..onSecondaryTap=() {
+        title:RichText(text: TextSpan(text: "SmartFenix", recognizer: TapGestureRecognizer()..onSecondaryTap=() {
           LoginController.logOut(context);
         })),
         centerTitle: true,
