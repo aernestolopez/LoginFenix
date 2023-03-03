@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
      return Scaffold(
         appBar:AppBar(
         automaticallyImplyLeading: false,
-        title:RichText(text: TextSpan(text: "SmartFenix", recognizer: TapGestureRecognizer()..onSecondaryTap=() {
+        title:RichText(text: TextSpan(text: "SmartFenix", style: TextStyle(fontSize: 25), recognizer: TapGestureRecognizer()..onSecondaryTap=() {
           LoginController.logOut(context);
         })),
         centerTitle: true,
@@ -76,8 +76,8 @@ class _HomeState extends State<Home> {
                mainAxisSize: MainAxisSize.min,
                children: <Widget>[
               ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-            title: Text(estado, textAlign: TextAlign.center,),
+            contentPadding: EdgeInsets.fromLTRB(15, 5, 25, 0),
+            title: Text(estado, style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
                      ),
                  FutureBuilder<Device?>(
                    future:futureDevice,
@@ -93,8 +93,6 @@ class _HomeState extends State<Home> {
                         default:
                         return Image.memory(snapshot.data!.imgEspera, width: 300, height: 300,);
                       }
-                       //return Text("Nombre Dispositivo: ${snapshot.data!.nombre} Tipo: ${snapshot.data!.tipo}");
-                      
                      } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }

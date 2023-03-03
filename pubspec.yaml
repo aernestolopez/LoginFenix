@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.0.8
   http: ^0.13.5
   json_serializable: ^6.6.1
+  mqtt_client: ^9.7.4
 
 
 dev_dependencies:
