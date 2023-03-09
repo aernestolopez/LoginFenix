@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:login_fenix/controller/login_controller.dart';
 import 'package:login_fenix/ui/pages/login.dart';
-//import 'firebase_options.dart';
-
+///Archivo main que carga la pagina del login
+///@aernestolopez
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LoginController.initfirebase();

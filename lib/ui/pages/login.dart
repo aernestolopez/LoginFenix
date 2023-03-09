@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_fenix/controller/login_controller.dart';
 import 'package:login_fenix/ui/pages/register.dart';
-
+///Pagina para loging
+///@aernestolopez
 class Login extends StatefulWidget {
    const Login({Key? key}) : super(key: key);
 
@@ -45,9 +46,6 @@ Widget cuerpo(BuildContext context){
             Text("¿No tienes cuenta?", style: TextStyle(fontSize: 18),),
             SizedBox(height: 10,),
             botonRegister(context)
-            
-            
-            //SizedBox(height: 40),
             
           ],
           ),

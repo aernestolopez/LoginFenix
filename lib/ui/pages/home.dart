@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:login_fenix/model/device.dart';
 import '../../controller/http_controller.dart';
 import '../../controller/login_controller.dart';
-
+///Pagina principal de la aplicacion tras iniciar sesion
+///@aernestolopez
 class Home extends StatefulWidget {
   const Home({super.key});
 

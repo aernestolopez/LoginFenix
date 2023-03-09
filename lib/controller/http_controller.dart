@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:login_fenix/services/http_service.dart';
 import 'package:login_fenix/model/device.dart';
-
+///Controlador para Http
+///@aernestolopez
 class HttpController{
   HttpService hs= HttpService();
   Future<Device?> ObtenerDispositivo() async{

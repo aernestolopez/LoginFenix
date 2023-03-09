@@ -1,6 +1,7 @@
 
 import 'package:flutter/foundation.dart';
-
+///Clase device con sus atributos
+///@aernestolopez
 class Device{
   String id, nombre, tipo;
   Uint8List imgAbierto, imgCerrado, imgEspera;

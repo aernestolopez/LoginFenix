@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:login_fenix/ui/pages/login.dart';
 
 import '../../controller/register_controller.dart';
-
+///Pagina para registrarse
+///@aernestolopez
 class Register extends StatefulWidget {
    const Register({Key? key}) : super(key: key);
 
