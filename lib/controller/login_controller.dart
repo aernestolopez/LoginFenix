@@ -19,13 +19,16 @@ static Future initfirebase() async {
 
 static Future comprobarLogin(email, pass, context) async {
   try {
+    //Intentamos iniciar sesion con FirebaseAuth con los datos introducidos
+    //Si se puede se envia a la siguiente pagina
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: pass)
         .then((value) =>
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return const Home();
             })));
-  } catch (e) {
+  } //Si no se puede iniciar sesion se muestra un mensaje de error
+  catch (e) {
     Fluttertoast.showToast(
       msg: e.toString(),
       toastLength: Toast.LENGTH_LONG,
